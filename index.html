@@ -6,13 +6,7 @@
   <title>Desire Tracker</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     :root {
       --primary-color: #667eea;
       --secondary-color: #764ba2;
@@ -24,436 +18,161 @@
       --text-dark: #2d3748;
       --text-medium: #4a5568;
       --border-radius: 12px;
-      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-      --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.1);
-      --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.15);
+      --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+      --shadow-md: 0 8px 16px rgba(0,0,0,0.1);
+      --shadow-lg: 0 12px 24px rgba(0,0,0,0.15);
       --transition: all 0.3s ease;
     }
-
     body {
       min-height: 100vh;
       background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-      padding: 20px;
-      color: var(--text-medium);
-      line-height: 1.6;
+      padding: 20px; color: var(--text-medium); line-height: 1.6;
     }
-
     .container {
-      max-width: 1000px;
-      margin: 20px auto;
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: var(--border-radius);
-      padding: 30px;
-      box-shadow: var(--shadow-lg);
-      backdrop-filter: blur(10px);
+      max-width: 1000px; margin: 20px auto;
+      background: rgba(255,255,255,0.95); border-radius: var(--border-radius);
+      padding: 30px; box-shadow: var(--shadow-lg); backdrop-filter: blur(10px);
     }
-
     h1 {
-      color: var(--text-dark);
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 2.8em;
-      font-weight: 700;
-      position: relative;
-      padding-bottom: 15px;
+      color: var(--text-dark); text-align: center;
+      margin-bottom: 30px; font-size: 2.8em; font-weight: 700; position: relative; padding-bottom: 15px;
     }
-
     h1::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 4px;
-      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-      border-radius: 2px;
+      content: ''; position: absolute; bottom: 0; left: 50%;
+      transform: translateX(-50%); width: 100px; height: 4px;
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); border-radius: 2px;
     }
-
     .user-info {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 30px;
-      padding: 15px;
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow-sm);
+      display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px;
+      padding: 15px; background: rgba(255,255,255,0.8); border-radius: var(--border-radius); box-shadow: var(--shadow-sm);
     }
-
-    .user-profile {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
+    .user-profile { display: flex; align-items: center; gap: 15px; }
     .user-avatar {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background-color: var(--light-gray);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      color: var(--text-medium);
+      width: 50px; height: 50px; border-radius: 50%; background-color: var(--light-gray);
+      display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--text-medium);
     }
-
-    .user-name {
-      font-weight: 600;
-      font-size: 18px;
-    }
-
-    .auth-buttons {
-      display: flex;
-      gap: 15px;
-    }
-
+    .user-name { font-weight: 600; font-size: 18px; }
+    .auth-buttons { display: flex; gap: 15px; }
     .btn {
-      padding: 12px 24px;
-      border: none;
-      border-radius: var(--border-radius);
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      padding: 12px 24px; border: none; border-radius: var(--border-radius);
+      font-size: 16px; font-weight: 600; cursor: pointer;
+      transition: var(--transition); display: flex; align-items: center; gap: 8px;
     }
-
-    .btn-primary {
-      background-color: var(--accent-color);
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background-color: var(--accent-hover);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .btn-danger {
-      background-color: var(--danger-color);
-      color: white;
-    }
-
-    .btn-danger:hover {
-      background-color: var(--danger-hover);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .btn-secondary {
-      background-color: var(--primary-color);
-      color: white;
-    }
-
-    .btn-secondary:hover {
-      background-color: #5a67d8;
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .dashboard {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 30px;
-    }
-
-    @media (max-width: 768px) {
-      .dashboard {
-        grid-template-columns: 1fr;
-      }
-    }
-
+    .btn-primary { background-color: var(--accent-color); color: white; }
+    .btn-primary:hover { background-color: var(--accent-hover); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .btn-danger { background-color: var(--danger-color); color: white; }
+    .btn-danger:hover { background-color: var(--danger-hover); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .btn-secondary { background-color: var(--primary-color); color: white; }
+    .btn-secondary:hover { background-color: #5a67d8; transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .dashboard { display: grid; grid-template-columns: 1fr 2fr; gap: 30px; }
+    @media (max-width:768px){ .dashboard { grid-template-columns: 1fr; } }
     .form-container {
-      background: white;
-      padding: 25px;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow-md);
+      background: white; padding: 25px; border-radius: var(--border-radius); box-shadow: var(--shadow-md);
     }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    label {
-      font-weight: 600;
-      color: var(--text-medium);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
+    .form-group { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+    label { font-weight: 600; color: var(--text-medium); display: flex; align-items: center; gap: 8px; }
     input, textarea, select {
-      padding: 12px 15px;
-      border: 2px solid var(--light-gray);
-      border-radius: var(--border-radius);
-      font-size: 16px;
-      transition: var(--transition);
+      padding: 12px 15px; border: 2px solid var(--light-gray); border-radius: var(--border-radius);
+      font-size: 16px; transition: var(--transition);
     }
-
     input:focus, textarea:focus, select:focus {
-      outline: none;
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+      outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(102,126,234,0.2);
     }
-
-    textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    .desires-container {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .search-bar {
-      display: flex;
-      margin-bottom: 20px;
-      position: relative;
-    }
-
-    .search-input {
-      flex: 1;
-      padding: 12px 15px 12px 45px;
-      border: 2px solid var(--light-gray);
-      border-radius: var(--border-radius);
-      font-size: 16px;
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-medium);
-    }
-
-    .filters {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-
+    textarea { min-height: 120px; resize: vertical; }
+    .desires-container { display: flex; flex-direction: column; gap: 20px; }
+    .search-bar { display: flex; margin-bottom: 20px; position: relative; }
+    .search-input { flex: 1; padding: 12px 15px 12px 45px; border: 2px solid var(--light-gray); border-radius: var(--border-radius); font-size: 16px; }
+    .search-icon { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-medium); }
+    .filters { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 20px; }
     .filter-btn {
-      padding: 8px 16px;
-      background: white;
-      border: 2px solid var(--light-gray);
-      border-radius: 20px;
-      font-size: 14px;
-      cursor: pointer;
-      transition: var(--transition);
+      padding: 8px 16px; background: white; border: 2px solid var(--light-gray); border-radius: 20px;
+      font-size: 14px; cursor: pointer; transition: var(--transition);
     }
-
-    .filter-btn.active {
-      background: var(--primary-color);
-      color: white;
-      border-color: var(--primary-color);
-    }
-
+    .filter-btn.active { background: var(--primary-color); color: white; border-color: var(--primary-color); }
     .desires-list {
-      display: grid;
-      gap: 20px;
-      max-height: 600px;
-      overflow-y: auto;
-      padding-right: 10px;
+      display: grid; gap: 20px; max-height: 600px; overflow-y: auto; padding-right: 10px;
     }
-
-    .desires-list::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    .desires-list::-webkit-scrollbar-track {
-      background: var(--light-gray);
-      border-radius: 10px;
-    }
-
-    .desires-list::-webkit-scrollbar-thumb {
-      background: var(--primary-color);
-      border-radius: 10px;
-    }
-
+    .desires-list::-webkit-scrollbar { width: 8px; }
+    .desires-list::-webkit-scrollbar-track { background: var(--light-gray); border-radius: 10px; }
+    .desires-list::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 10px; }
     .desire-card {
-      background: white;
-      border-radius: var(--border-radius);
-      padding: 20px;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-      border-left: 5px solid #cbd5e0;
-      position: relative;
+      background: white; border-radius: var(--border-radius); padding: 20px; box-shadow: var(--shadow-sm);
+      transition: var(--transition); border-left: 5px solid #cbd5e0; position: relative;
     }
-
     .desire-card.high { border-left-color: #f56565; }
     .desire-card.medium { border-left-color: #ed8936; }
     .desire-card.low { border-left-color: #48bb78; }
-
     .desire-card h3 {
-      margin-bottom: 10px;
-      font-size: 1.4em;
-      color: var(--text-dark);
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      margin-bottom: 10px; font-size: 1.4em; color: var(--text-dark);
+      display: flex; align-items: center; gap: 10px;
     }
-
-    .desire-card p {
-      color: var(--text-medium);
-      margin-bottom: 15px;
-    }
-
+    .desire-card p { color: var(--text-medium); margin-bottom: 15px; }
     .card-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 15px;
-      padding-top: 15px;
-      border-top: 1px solid var(--light-gray);
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--light-gray);
     }
-
     .priority-badge {
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 14px;
-      font-weight: 600;
+      padding: 4px 12px; border-radius: 20px; font-size: 14px; font-weight: 600;
     }
-
-    .priority-high {
-      background-color: #fff5f5;
-      color: #e53e3e;
-    }
-
-    .priority-medium {
-      background-color: #fffaf0;
-      color: #dd6b20;
-    }
-
-    .priority-low {
-      background-color: #f0fff4;
-      color: #38a169;
-    }
-
+    .priority-high { background-color: #fff5f5; color: #e53e3e; }
+    .priority-medium { background-color: #fffaf0; color: #dd6b20; }
+    .priority-low { background-color: #f0fff4; color: #38a169; }
     .grateful-badge {
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 14px;
-      font-weight: 600;
-      background-color: #e6fffa;
-      color: #319795;
+      padding: 4px 12px; border-radius: 20px; font-size: 14px; font-weight: 600;
+      background-color: #e6fffa; color: #319795;
     }
-
-    .card-actions {
-      display: flex;
-      gap: 10px;
-    }
-
+    .card-actions { display: flex; gap: 10px; }
     .icon-btn {
-      background: none;
-      border: none;
-      font-size: 18px;
-      cursor: pointer;
-      transition: var(--transition);
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
+      background: none; border: none; font-size: 18px; cursor: pointer; transition: var(--transition);
+      width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 50%;
     }
-
     .icon-btn:hover { background-color: var(--light-gray); }
     .delete-btn:hover { color: var(--danger-color); }
     .edit-btn:hover { color: var(--primary-color); }
     .grateful-btn:hover { color: var(--accent-color); }
-
     .status-count {
-      display: flex;
-      justify-content: space-around;
-      margin: 30px 0;
+      display: flex; justify-content: space-around; margin: 30px 0;
     }
-
     .count-item {
-      text-align: center;
-      padding: 15px;
-      background: white;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow-sm);
-      flex: 1;
-      margin: 0 10px;
+      text-align: center; padding: 15px; background: white; border-radius: var(--border-radius);
+      box-shadow: var(--shadow-sm); flex: 1; margin: 0 10px;
     }
-
-    .count-num {
-      font-size: 32px;
-      font-weight: 700;
-      color: var(--primary-color);
-    }
-
-    .count-label {
-      font-size: 16px;
-      color: var(--text-medium);
-    }
-
+    .count-num { font-size: 32px; font-weight: 700; color: var(--primary-color); }
+    .count-label { font-size: 16px; color: var(--text-medium); }
     .empty-state {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 40px;
-      text-align: center;
-      background: white;
-      border-radius: var(--border-radius);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 40px; text-align: center; background: white; border-radius: var(--border-radius);
       box-shadow: var(--shadow-sm);
     }
-
-    .empty-icon {
-      font-size: 60px;
-      color: var(--light-gray);
-      margin-bottom: 20px;
-    }
-
-    .empty-text {
-      font-size: 18px;
-      color: var(--text-medium);
-      margin-bottom: 20px;
-    }
-
-    .date-added {
-      font-size: 14px;
-      color: #a0aec0;
-    }
-
+    .empty-icon { font-size: 60px; color: var(--light-gray); margin-bottom: 20px; }
+    .empty-text { font-size: 18px; color: var(--text-medium); margin-bottom: 20px; }
+    .date-added { font-size: 14px; color: #a0aec0; }
     .toast {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: #2d3748;
-      color: white;
-      padding: 15px 25px;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow-lg);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      z-index: 1000;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: var(--transition);
+      position: fixed; bottom: 30px; right: 30px; background: #2d3748; color: white;
+      padding: 15px 25px; border-radius: var(--border-radius); box-shadow: var(--shadow-lg);
+      display: flex; align-items: center; gap: 10px; z-index: 1000; opacity: 0;
+      transform: translateY(20px); transition: var(--transition);
     }
-
-    .toast.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
+    .toast.show { opacity: 1; transform: translateY(0); }
     .toast-success { background: var(--accent-color); }
     .toast-error { background: var(--danger-color); }
+    .modal {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center;
+      z-index: 1000; opacity: 0; pointer-events: none; transition: var(--transition);
+    }
+    .modal.show { opacity: 1; pointer-events: all; }
+    .modal-content {
+      background: white; border-radius: var(--border-radius); padding: 30px;
+      width: 90%; max-width: 500px; transform: scale(0.9); transition: var(--transition); box-shadow: var(--shadow-lg);
+    }
+    .modal.show .modal-content { transform: scale(1); }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .modal-title { font-size: 24px; font-weight: 700; color: var(--text-dark); }
+    .close-modal { background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text-medium); }
+    .form-title { margin-bottom: 20px; font-size: 1.5em; color: var(--text-dark); }
+    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+    .pulse { animation: pulse 2s infinite; }
   </style>
 </head>
 <body>
@@ -461,24 +180,17 @@
     <h1>✨ Desire Tracker</h1>
     <div class="user-info" id="userInfo">
       <div class="user-profile" id="userProfile" style="display:none;">
-        <div class="user-avatar" id="userAvatar">
-          <i class="fas fa-user"></i>
-        </div>
+        <div class="user-avatar" id="userAvatar"><i class="fas fa-user"></i></div>
         <div>
           <div class="user-name" id="userName">Guest</div>
           <div class="user-email" id="userEmail"></div>
         </div>
       </div>
       <div class="auth-buttons">
-        <button id="signInBtn" class="btn btn-primary">
-          <i class="fab fa-google"></i> Sign in with Google
-        </button>
-        <button id="signOutBtn" class="btn btn-danger" style="display:none;">
-          <i class="fas fa-sign-out-alt"></i> Sign Out
-        </button>
+        <button id="signInBtn" class="btn btn-primary"><i class="fab fa-google"></i> Sign in with Google</button>
+        <button id="signOutBtn" class="btn btn-danger" style="display:none;"><i class="fas fa-sign-out-alt"></i> Sign Out</button>
       </div>
     </div>
-
     <div class="status-count" id="statusCount" style="display:none;">
       <div class="count-item">
         <div class="count-num" id="totalCount">0</div>
@@ -497,7 +209,6 @@
         <div class="count-label">Low Priority</div>
       </div>
     </div>
-
     <div class="dashboard" id="dashboard" style="display:none;">
       <div class="form-container">
         <h2 class="form-title">Add New Desire</h2>
@@ -533,12 +244,9 @@
             <label for="targetDate"><i class="fas fa-calendar"></i> Target Date (Optional)</label>
             <input type="date" id="targetDate">
           </div>
-          <button type="submit" class="btn btn-primary">
-            <i class="fas fa-plus"></i> Add Desire
-          </button>
+          <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Add Desire</button>
         </form>
       </div>
-
       <div class="desires-container">
         <div class="search-bar">
           <i class="fas fa-search search-icon"></i>
@@ -555,47 +263,88 @@
         </div>
       </div>
     </div>
-
     <div class="empty-state" id="emptyState">
-      <div class="empty-icon">
-        <i class="fas fa-sparkles"></i>
-      </div>
+      <div class="empty-icon"><i class="fas fa-sparkles"></i></div>
       <h3 class="empty-text">Sign in to start tracking your desires</h3>
-      <button id="signInBtnEmpty" class="btn btn-primary">
-        <i class="fab fa-google"></i> Sign in with Google
-      </button>
+      <button id="signInBtnEmpty" class="btn btn-primary pulse"><i class="fab fa-google"></i> Sign in with Google</button>
     </div>
   </div>
-
   <div class="toast" id="toast">
     <i class="fas fa-check-circle"></i>
     <span id="toastMessage">Operation successful!</span>
   </div>
-
+  <!-- Edit Modal -->
+  <div class="modal" id="editModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Edit Desire</h3>
+        <button class="close-modal" id="closeModal">&times;</button>
+      </div>
+      <form id="editForm">
+        <input type="hidden" id="editId">
+        <div class="form-group">
+          <label for="editTitle">Desire</label>
+          <input type="text" id="editTitle" required>
+        </div>
+        <div class="form-group">
+          <label for="editDescription">Description</label>
+          <textarea id="editDescription"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="editCategory">Category</label>
+          <select id="editCategory">
+            <option value="personal">Personal</option>
+            <option value="career">Career</option>
+            <option value="health">Health</option>
+            <option value="financial">Financial</option>
+            <option value="relationship">Relationship</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="editPriority">Priority</label>
+          <select id="editPriority">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="editTargetDate">Target Date (Optional)</label>
+          <input type="date" id="editTargetDate">
+        </div>
+        <button type="submit" class="btn btn-primary">Update Desire</button>
+      </form>
+    </div>
+  </div>
+  <!-- Gratitude Modal -->
+  <div class="modal" id="gratitudeModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Express Gratitude</h3>
+        <button class="close-modal" id="closeGratitudeModal">&times;</button>
+      </div>
+      <form id="gratitudeForm">
+        <input type="hidden" id="gratitudeId">
+        <div class="form-group">
+          <label for="gratitudeNote">Gratitude Note (Optional)</label>
+          <textarea id="gratitudeNote" placeholder="Write your gratitude note..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Mark as Grateful</button>
+      </form>
+    </div>
+  </div>
   <script type="module">
     import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js';
     import {
-      getAuth,
-      signInWithPopup,
-      GoogleAuthProvider,
-      signOut,
-      onAuthStateChanged
+      getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged
     } from 'https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js';
     import {
-      getFirestore,
-      collection,
-      addDoc,
-      getDocs,
-      doc,
-      deleteDoc,
-      updateDoc,
-      query,
-      orderBy,
-      serverTimestamp,
-      Timestamp
+      getFirestore, collection, addDoc, getDocs, doc, deleteDoc, updateDoc,
+      query, orderBy, serverTimestamp, Timestamp
     } from 'https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js';
 
-    // Firebase initialization
+    // Firebase configuration
     const firebaseConfig = {
       apiKey: "AIzaSyCLfBy9R_tL8WPRJpmKZMcy70OzhId9V1w",
       authDomain: "desires-b59a7.firebaseapp.com",
@@ -631,11 +380,17 @@
     const lowCount = document.getElementById('lowCount');
     const searchInput = document.getElementById('searchDesires');
     const filterBtns = document.querySelectorAll('.filter-btn');
+    const editModal = document.getElementById('editModal');
+    const closeModal = document.getElementById('closeModal');
+    const editForm = document.getElementById('editForm');
+    const gratitudeModal = document.getElementById('gratitudeModal');
+    const closeGratitudeModal = document.getElementById('closeGratitudeModal');
+    const gratitudeForm = document.getElementById('gratitudeForm');
 
     let currentFilter = 'all';
     let desiresData = [];
 
-    // Utility functions
+    // Utility: show toast notifications
     const showToast = (message, type = 'success') => {
       toastMessage.textContent = message;
       toast.className = `toast ${type === 'success' ? 'toast-success' : 'toast-error'} show`;
@@ -652,11 +407,8 @@
     const addDesire = async (userId, desireData) => {
       try {
         desireData.createdAt = serverTimestamp();
-        // Default grateful status to false if not provided
         desireData.grateful = desireData.grateful || false;
-        if (desireData.targetDate) {
-          desireData.targetDate = new Date(desireData.targetDate);
-        }
+        if (desireData.targetDate) { desireData.targetDate = new Date(desireData.targetDate); }
         await addDoc(collection(db, `users/${userId}/desires`), desireData);
         await renderDesires(userId);
         showToast('Desire added successfully!');
@@ -679,9 +431,7 @@
 
     const updateDesire = async (userId, id, updatedData) => {
       try {
-        if (updatedData.targetDate) {
-          updatedData.targetDate = new Date(updatedData.targetDate);
-        }
+        if (updatedData.targetDate) { updatedData.targetDate = new Date(updatedData.targetDate); }
         await updateDoc(doc(db, `users/${userId}/desires`, id), updatedData);
         await renderDesires(userId);
         showToast('Desire updated successfully!');
@@ -691,69 +441,39 @@
       }
     };
 
-    // Inline editing: Replace card view with an inline form
-    const enableInlineEdit = (card, desire, currentUser) => {
-      // Create an inline edit form
-      card.innerHTML = `
-        <form class="inline-edit-form">
-          <div class="form-group">
-            <input type="text" id="editTitle_${desire.id}" value="${desire.title}" required>
-          </div>
-          <div class="form-group">
-            <textarea id="editDescription_${desire.id}" placeholder="Description...">${desire.description || ''}</textarea>
-          </div>
-          <div class="form-group">
-            <select id="editCategory_${desire.id}">
-              <option value="personal" ${desire.category==='personal'?'selected':''}>Personal</option>
-              <option value="career" ${desire.category==='career'?'selected':''}>Career</option>
-              <option value="health" ${desire.category==='health'?'selected':''}>Health</option>
-              <option value="financial" ${desire.category==='financial'?'selected':''}>Financial</option>
-              <option value="relationship" ${desire.category==='relationship'?'selected':''}>Relationship</option>
-              <option value="other" ${desire.category==='other'?'selected':''}>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <select id="editPriority_${desire.id}">
-              <option value="low" ${desire.priority==='low'?'selected':''}>Low</option>
-              <option value="medium" ${desire.priority==='medium'?'selected':''}>Medium</option>
-              <option value="high" ${desire.priority==='high'?'selected':''}>High</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <input type="date" id="editTargetDate_${desire.id}" value="${desire.targetDate ? new Date(desire.targetDate).toISOString().split('T')[0] : ''}">
-          </div>
-          <div class="card-actions">
-            <button type="submit" class="icon-btn btn-primary" title="Save"><i class="fas fa-save"></i></button>
-            <button type="button" class="icon-btn btn-secondary" title="Cancel"><i class="fas fa-times"></i></button>
-          </div>
-        </form>
-      `;
-      const form = card.querySelector('.inline-edit-form');
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const updatedData = {
-          title: document.getElementById(`editTitle_${desire.id}`).value,
-          description: document.getElementById(`editDescription_${desire.id}`).value,
-          category: document.getElementById(`editCategory_${desire.id}`).value,
-          priority: document.getElementById(`editPriority_${desire.id}`).value,
-          targetDate: document.getElementById(`editTargetDate_${desire.id}`).value || null
-        };
-        updateDesire(currentUser.uid, desire.id, updatedData);
-      });
-      // Cancel button: re-render the list
-      form.querySelector('.btn-secondary').addEventListener('click', () => {
-        renderDesires(currentUser.uid);
-      });
+    // Open Edit Modal
+    const openEditModal = (desire) => {
+      document.getElementById('editId').value = desire.id;
+      document.getElementById('editTitle').value = desire.title;
+      document.getElementById('editDescription').value = desire.description || '';
+      document.getElementById('editCategory').value = desire.category || 'personal';
+      document.getElementById('editPriority').value = desire.priority;
+      if (desire.targetDate) {
+        const date = desire.targetDate instanceof Timestamp ? desire.targetDate.toDate() : new Date(desire.targetDate);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        document.getElementById('editTargetDate').value = `${year}-${month}-${day}`;
+      } else {
+        document.getElementById('editTargetDate').value = '';
+      }
+      editModal.classList.add('show');
     };
 
-    // Render desires (with inline editing and gratitude feature)
+    // Open Gratitude Modal
+    const openGratitudeModal = (desire) => {
+      document.getElementById('gratitudeId').value = desire.id;
+      document.getElementById('gratitudeNote').value = desire.gratitudeNote || '';
+      gratitudeModal.classList.add('show');
+    };
+
+    // Render Desires & apply filtering
     const renderDesires = async (userId) => {
       try {
         desiresList.innerHTML = '';
         const q = query(collection(db, `users/${userId}/desires`), orderBy('createdAt', 'desc'));
         const querySnapshot = await getDocs(q);
-        let desires = [];
-        let countHigh = 0, countMedium = 0, countLow = 0;
+        let desires = [], countHigh = 0, countMedium = 0, countLow = 0;
         querySnapshot.forEach((docSnap) => {
           const data = docSnap.data();
           desires.push({ id: docSnap.id, ...data });
@@ -781,7 +501,6 @@
       }
     };
 
-    // Filtering and rendering the cards with event listeners
     const filterDesires = (filter) => {
       desiresList.innerHTML = '';
       let filtered = desiresData;
@@ -792,9 +511,7 @@
           (d.description && d.description.toLowerCase().includes(term))
         );
       }
-      if (filter !== 'all') {
-        filtered = filtered.filter(d => d.priority === filter);
-      }
+      if (filter !== 'all') { filtered = filtered.filter(d => d.priority === filter); }
       filtered.forEach(desire => {
         const card = document.createElement('div');
         card.className = `desire-card ${desire.priority}`;
@@ -822,34 +539,23 @@
             <div class="card-actions">
               <button class="icon-btn edit-btn" title="Edit"><i class="fas fa-edit"></i></button>
               <button class="icon-btn delete-btn" title="Delete"><i class="fas fa-trash"></i></button>
-              ${!desire.grateful ? `<button class="icon-btn grateful-btn" title="Mark as Grateful"><i class="fas fa-heart"></i></button>` : ''}
+              ${!desire.grateful ? `<button class="icon-btn grateful-btn" title="Express Gratitude"><i class="fas fa-heart"></i></button>` : ''}
             </div>
           </div>
           <small class="date-added">Added: ${addedDate}</small>
         `;
         desiresList.appendChild(card);
-        // Event listeners for card actions
         const currentUser = auth.currentUser;
-        card.querySelector('.delete-btn').addEventListener('click', () => {
-          if (currentUser) deleteDesire(currentUser.uid, desire.id);
-        });
-        card.querySelector('.edit-btn').addEventListener('click', () => {
-          if (currentUser) enableInlineEdit(card, desire, currentUser);
-        });
+        card.querySelector('.delete-btn').addEventListener('click', () => { if (currentUser) deleteDesire(currentUser.uid, desire.id); });
+        card.querySelector('.edit-btn').addEventListener('click', () => { if (currentUser) openEditModal(desire); });
         const gratefulBtn = card.querySelector('.grateful-btn');
         if (gratefulBtn) {
-          gratefulBtn.addEventListener('click', () => {
-            // Prompt for an optional gratitude note
-            const note = prompt("Enter a gratitude note (optional):");
-            const update = { grateful: true };
-            if (note) update.gratitudeNote = note;
-            updateDesire(currentUser.uid, desire.id, update);
-          });
+          gratefulBtn.addEventListener('click', () => { if (currentUser) openGratitudeModal(desire); });
         }
       });
     };
 
-    // Event listeners for form and auth buttons
+    // Event listeners for forms and buttons
     desireForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const title = document.getElementById('desireTitle').value;
@@ -863,6 +569,35 @@
       }
       desireForm.reset();
     });
+
+    editForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const id = document.getElementById('editId').value;
+      const title = document.getElementById('editTitle').value;
+      const description = document.getElementById('editDescription').value;
+      const category = document.getElementById('editCategory').value;
+      const priority = document.getElementById('editPriority').value;
+      const targetDate = document.getElementById('editTargetDate').value;
+      const user = auth.currentUser;
+      if (user) {
+        updateDesire(user.uid, id, { title, description, category, priority, targetDate: targetDate || null });
+      }
+      editModal.classList.remove('show');
+    });
+
+    gratitudeForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const id = document.getElementById('gratitudeId').value;
+      const note = document.getElementById('gratitudeNote').value;
+      const user = auth.currentUser;
+      if (user) {
+        updateDesire(user.uid, id, { grateful: true, gratitudeNote: note });
+      }
+      gratitudeModal.classList.remove('show');
+    });
+
+    closeModal.addEventListener('click', () => { editModal.classList.remove('show'); });
+    closeGratitudeModal.addEventListener('click', () => { gratitudeModal.classList.remove('show'); });
 
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -880,31 +615,16 @@
     });
 
     signInBtn.addEventListener('click', async () => {
-      try {
-        await signInWithPopup(auth, provider);
-      } catch (error) {
-        console.error('Sign in error:', error);
-        showToast('Sign in failed', 'error');
-      }
+      try { await signInWithPopup(auth, provider); }
+      catch (error) { console.error('Sign in error:', error); showToast('Sign in failed', 'error'); }
     });
-
     signInBtnEmpty.addEventListener('click', async () => {
-      try {
-        await signInWithPopup(auth, provider);
-      } catch (error) {
-        console.error('Sign in error:', error);
-        showToast('Sign in failed', 'error');
-      }
+      try { await signInWithPopup(auth, provider); }
+      catch (error) { console.error('Sign in error:', error); showToast('Sign in failed', 'error'); }
     });
-
     signOutBtn.addEventListener('click', async () => {
-      try {
-        await signOut(auth);
-        showToast('Signed out successfully');
-      } catch (error) {
-        console.error('Sign out error:', error);
-        showToast('Sign out failed', 'error');
-      }
+      try { await signOut(auth); showToast('Signed out successfully'); }
+      catch (error) { console.error('Sign out error:', error); showToast('Sign out failed', 'error'); }
     });
 
     onAuthStateChanged(auth, (user) => {
@@ -922,9 +642,7 @@
         } else if (user.displayName) {
           const initials = user.displayName.split(' ').map(n => n[0]).join('').toUpperCase();
           userAvatar.innerHTML = initials;
-        } else {
-          userAvatar.innerHTML = '<i class="fas fa-user"></i>';
-        }
+        } else { userAvatar.innerHTML = '<i class="fas fa-user"></i>'; }
         renderDesires(user.uid);
       } else {
         userProfile.style.display = 'none';
